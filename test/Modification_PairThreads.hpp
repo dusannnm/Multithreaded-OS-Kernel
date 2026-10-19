@@ -1,0 +1,13 @@
+//
+// Created by os on 9/24/25.
+//
+
+#ifndef PROJECT_BASE_MODIFICATION_PAIRTHREADS_HPP
+#define PROJECT_BASE_MODIFICATION_PAIRTHREADS_HPP
+
+
+void Modification_PairThreads_test();
+
+
+
+#endif //PROJECT_BASE_MODIFICATION_PAIRTHREADS_HPP

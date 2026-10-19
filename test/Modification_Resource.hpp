@@ -1,0 +1,12 @@
+//
+// Created by os on 10/8/25.
+//
+
+#ifndef PROJECT_BASE_MODIFICATION_RESOURCE_HPP
+#define PROJECT_BASE_MODIFICATION_RESOURCE_HPP
+
+
+void Modification_Resource_test();
+
+
+#endif //PROJECT_BASE_MODIFICATION_RESOURCE_HPP
