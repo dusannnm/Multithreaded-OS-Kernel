@@ -21,7 +21,10 @@
 //        MemoryAllocator::mem_free((uint8*)ptr);
 //}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 Thread::Thread (void (*body)(void*), void* arg)
 {
         this->body = body;
@@ -42,7 +45,10 @@ Thread:: ~Thread ()
 
 int Thread::start ()
 {
+<<<<<<< HEAD
         thread_wait_barrier();
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
         return thread_create(&myHandle, body, arg);
 }
 
@@ -81,6 +87,7 @@ void Thread::join ()
 }
 
 
+<<<<<<< HEAD
 int Thread::getThreadId()
 {
     return thread_id();
@@ -104,11 +111,17 @@ void Thread::sync()
 }
 
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 Semaphore::Semaphore (unsigned init)
 {
         sem_open(&myHandle, init);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 Semaphore::~Semaphore ()
 {
         sem_close(myHandle);
@@ -138,6 +151,7 @@ int Semaphore::tryWait()
         return sem_trywait(myHandle);
 }
 
+<<<<<<< HEAD
 int Semaphore::waitN(unsigned n)
 {
         return sem_wait_n(myHandle, n);
@@ -148,6 +162,8 @@ int Semaphore::signalN(unsigned n)
         return sem_signal_n(myHandle,n);
 }
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 char Console::getc() {
         char c = ::getc();
         return c;

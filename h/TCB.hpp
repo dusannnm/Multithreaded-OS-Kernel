@@ -41,6 +41,7 @@ public:
 
     //uint getTimeSlice() const {return timeSLice; }
 
+<<<<<<< HEAD
     static int ID;
 
     static int getRunningID() { return running->myID; }
@@ -60,6 +61,8 @@ public:
     void send(char* message);
 
     static char* receive();
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
 
 private:
@@ -78,6 +81,7 @@ private:
     bool blocked;
     void* arguments;
     Sem* semaphore;
+<<<<<<< HEAD
     int myID;
     TCB* pair;
     bool synchronize;
@@ -90,14 +94,24 @@ private:
      void continueSync();
 
     friend class Riscv;
+=======
+
+    //friend class Riscv;
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
     static uint64 timeSliceCounter;
     static void contextSwitch(Context *oldContext, Context *newContext);
     static void threadWrapper();
 
+<<<<<<< HEAD
 
     TCB(Body body, void* arguments, uint64* stack);
 
+=======
+    TCB(Body body, void* arguments, uint64* stack);
+
+
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 };
 
 #endif //PROJECT_BASE_TCB_HPP

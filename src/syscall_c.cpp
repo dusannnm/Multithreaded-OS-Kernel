@@ -31,6 +31,7 @@ uint32 mem_free(void* ptr)
 }
 
 
+<<<<<<< HEAD
 size_t mem_get_free_space()
 {
 	__asm__ volatile("li a0, 0x03");
@@ -53,6 +54,8 @@ size_t mem_get_largest_free_block()
 }
 
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 uint32 thread_create(thread_t* handle, void(*startRoutine)(void*), void* arg)
 {
 	uint8* stack = (uint8*) mem_alloc(DEFAULT_STACK_SIZE);
@@ -96,6 +99,7 @@ void thread_join(thread_t handle)
 }
 
 
+<<<<<<< HEAD
 int thread_id()
 {
 	__asm__ volatile("li a0, 0x15");
@@ -139,6 +143,8 @@ void thread_sync(thread_t handle)
 }
 
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 uint32 sem_open(sem_t* handle, uint64 init)
 {
 	__asm__ volatile("mv a2, %0" : : "r"(init));
@@ -191,7 +197,11 @@ uint32 sem_signal(sem_t id)
 uint32 sem_trywait(sem_t id)
 {
 	__asm__ volatile("mv a1, %0" : : "r"(id));
+<<<<<<< HEAD
 	__asm__ volatile("li a0, 0x27");
+=======
+	__asm__ volatile("li a0, 0x26");
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 	__asm__ volatile("ecall");
 
 	uint32 returnValue;
@@ -204,6 +214,7 @@ uint32 sem_timedwait(sem_t id, time_t time)
 	return 0;
 }
 
+<<<<<<< HEAD
 uint32 sem_wait_n(sem_t id, uint64 n)
 {
 	__asm__ volatile("mv a2, %0" : : "r"(n));
@@ -227,6 +238,8 @@ uint32 sem_signal_n(sem_t id, uint64 n)
 	__asm__ volatile("mv %0, a0" : "=r"(returnValue));
 	return returnValue;
 }
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
 uint32 time_sleep(time_t time)
 {

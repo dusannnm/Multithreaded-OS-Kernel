@@ -14,6 +14,7 @@ Sem::Sem(uint64 init)
 
 uint32 Sem::signal()
 {
+<<<<<<< HEAD
     if (!open) return -1;
 
     value++;
@@ -29,12 +30,22 @@ uint32 Sem::signal()
         Scheduler::put(t);
     }
 
+=======
+    if (!this->isOpen()) return -1;
+
+    if(++value <= 0){
+        TCB* unblockedThread = getBlocked();
+        unblockedThread->setBlocked(false);
+        Scheduler::put(unblockedThread);
+    }
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
     return 0;
 }
 
 
 uint32 Sem::wait()
 {
+<<<<<<< HEAD
     if (!open) return -1;
 
     if (value > 0) {
@@ -47,6 +58,18 @@ uint32 Sem::wait()
     TCB::dispatch();
 
     return open ? 0 : -1;
+=======
+    if (!this->isOpen()) return -1;
+
+    if(--value < 0){
+        TCB* blockedThread= TCB::running;
+        putBlocked(blockedThread);
+        blockedThread->setBlocked(true);
+        TCB::dispatch();
+    	if (!this->isOpen()) return -1;
+    }
+    return 0;
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 }
 
 
@@ -67,6 +90,7 @@ uint32 Sem::close()
     if (!this->isOpen()) return -1;
     this->setOpen(false);
 
+<<<<<<< HEAD
     while (blocked) {
         Elem* toDelete = blocked;
         blocked = blocked->next;
@@ -75,6 +99,13 @@ uint32 Sem::close()
         delete toDelete;
     }
 
+=======
+    for (Elem* iter = blocked; iter; iter = iter->next){
+        //TCB::TCB* thread = this->getBlocked();
+        iter->thread->setBlocked(false);
+        Scheduler::put(iter->thread);
+    }
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
     return 0;
 }
 
@@ -88,6 +119,7 @@ TCB* Sem::getBlocked()
     return unblockedThread;
 }
 
+<<<<<<< HEAD
 bool Sem::seekBlocked()
 {
     if (blocked)
@@ -102,6 +134,13 @@ void Sem::putBlocked(TCB* blockedThread, int requested)
     Elem* newBlocked = new Elem;
     newBlocked->thread = blockedThread;
     newBlocked->requested = requested;
+=======
+
+void Sem::putBlocked(TCB* blockedThread)
+{
+    Elem* newBlocked = new Elem;
+    newBlocked->thread = blockedThread;
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
     //newBlocked->thread->setBlocked(true);
     newBlocked->next = nullptr;
 
@@ -118,6 +157,7 @@ Sem* Sem::createSemaphore(uint64 init)
 {
     return new Sem(init);
 }
+<<<<<<< HEAD
 
 uint32 Sem::signalN(uint64 n)
 {
@@ -156,3 +196,5 @@ uint32 Sem::waitN(uint64 n)
     return open ? 0 : -1;
 }
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c

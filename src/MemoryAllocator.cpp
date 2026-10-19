@@ -125,6 +125,7 @@ uint32 MemoryAllocator::mem_free(void* ptr){
 	return 0;
 }
 
+<<<<<<< HEAD
 size_t MemoryAllocator::mem_get_free_space(){
 
 	size_t size = 0;
@@ -148,6 +149,8 @@ size_t MemoryAllocator::mem_get_largest_free_block(){
 	return largest;
 }
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 void MemoryAllocator::connectBlocks(dataBlock* current){
 	if(current->next && (char*)current + sizeof(dataBlock) + current->size == (char*)current->next) {
 		current->size += current->next->size + sizeof(dataBlock);

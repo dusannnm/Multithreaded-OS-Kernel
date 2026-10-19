@@ -22,10 +22,13 @@ public:
     static int sleep (time_t);
 
     void join();
+<<<<<<< HEAD
     int getThreadId();
     static void setMaximumThreads (int number = 5);
     static void pair(Thread* t1, Thread* t2);
     void sync();
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
 protected:
     Thread ();
@@ -48,8 +51,11 @@ public:
     int signal ();
     int timedWait (time_t);
     int tryWait();
+<<<<<<< HEAD
     int waitN(unsigned n);
     int signalN(unsigned n);
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
 private:
     sem_t myHandle;
@@ -62,4 +68,8 @@ public:
     static void putc (char);
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 #endif //PROJECT_BASE_SYSCALL_CPP_HPP

@@ -106,4 +106,4 @@ This project includes modified xv6 software. See [`LICENSE`](LICENSE) for the co
 
 ## Author
 
-Dušan Milivojević, 2024/2025
+Dušan Milivojević, 2024/2025.

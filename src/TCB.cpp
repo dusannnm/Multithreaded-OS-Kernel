@@ -10,8 +10,11 @@
 
 TCB *TCB::running = nullptr;
 uint64 TCB::timeSliceCounter = 0;
+<<<<<<< HEAD
 int TCB:: ID = 0;
 Sem* TCB::barrier = 0;
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
 TCB::TCB(Body body, void* arguments, uint64* stack)
 {
@@ -25,6 +28,7 @@ TCB::TCB(Body body, void* arguments, uint64* stack)
     this->blocked = false;
     this->semaphore = Sem::createSemaphore(0);
     //timeSlice = DEFAULT_TIME_SLICE;
+<<<<<<< HEAD
     this->myID = ID++;
     this->synchronize = false;
     this->syncSemaphore = Sem::createSemaphore(0);
@@ -35,6 +39,8 @@ TCB::TCB(Body body, void* arguments, uint64* stack)
     {
         if (body == nullptr) barrier = Sem::createSemaphore(5);
     }
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
     {
         if (body != nullptr) { Scheduler::put(this); }
@@ -57,7 +63,10 @@ void TCB::exit()
     TCB *old = running;
     old->setFinished(true);
     old->semaphore->close();
+<<<<<<< HEAD
     TCB::barrier->signal();
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
     TCB::dispatch();
 }
 
@@ -67,7 +76,10 @@ TCB *TCB::createThread(Body body, void* arguments, uint64 *stack)
     return new TCB(body, arguments, stack);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 void TCB::threadWrapper()
 {
     Riscv::popSppSpie();
@@ -75,13 +87,17 @@ void TCB::threadWrapper()
 	thread_exit();
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 void TCB::join()
 {
     this->semaphore->wait();
 }
 
 
+<<<<<<< HEAD
 void TCB::setMaxThreads(int number)
 {
     barrier->setValue(number);
@@ -139,4 +155,6 @@ void TCB::sync()
 
 
 
+=======
+>>>>>>> dea1cbf46fba0fc2bd14f61e779d3c392e2d2c0c
 
